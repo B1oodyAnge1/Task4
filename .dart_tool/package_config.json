@@ -44,6 +44,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "crypto",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5",
       "packageUri": "lib/",
@@ -69,7 +75,7 @@
     },
     {
       "name": "file_picker",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/file_picker-5.2.1",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/file_picker-5.2.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -110,6 +116,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "hive",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/hive-2.2.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "http_parser",
       "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/http_parser-4.0.2",
       "packageUri": "lib/",
@@ -123,7 +135,7 @@
     },
     {
       "name": "lints",
-      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.0",
+      "rootUri": "file:///C:/flutter/.pub-cache/hosted/pub.dartlang.org/lints-2.0.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
@@ -236,7 +248,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2022-10-17T19:38:41.310438Z",
+  "generated": "2022-11-07T12:53:11.068396Z",
   "generator": "pub",
   "generatorVersion": "2.18.2"
 }

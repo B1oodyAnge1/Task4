@@ -31,15 +31,11 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
     on<ConverterEvent>((event, emit) async {
       if (event is OpenMyDocument) {
         await GetAnExtension(event, state, emit);
-      } else {
-        if (event is ConverterDocument) {
-          await Convertor(event, state, emit);
-        } else {
-          if (event is DownloadDocument) {
-            await Download(event, state, emit);
-          } else {}
-        }
-      }
+      } else if (event is ConverterDocument) {
+        await Convertor(event, state, emit);
+      } else if (event is DownloadDocument) {
+        await Download(event, state, emit);
+      } else {}
     });
   }
   //получение расширений

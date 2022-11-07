@@ -7,11 +7,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/menu.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'converter_bloc.dart';
 import 'converter_state.dart';
 import 'converter_event.dart';
+
+import 'controller.dart';
 
 class ConverterPage extends StatefulWidget {
   const ConverterPage({Key? key}) : super(key: key);
@@ -38,6 +41,8 @@ class _ConverterPageState extends State<ConverterPage> {
         child: BlocBuilder<ConverterBloc, ConverterState>(
             builder: (context, state) {
           return Scaffold(
+            drawer: MyMenu(),
+            appBar: AppBar(),
             body: Center(
                 child: Container(
               padding: EdgeInsets.only(top: 230),
@@ -158,6 +163,7 @@ class _ConverterPageState extends State<ConverterPage> {
                       ),
                     ),
                   ),
+                  HiveTest(),
                 ],
               ),
             )),
@@ -186,5 +192,19 @@ Widget _CircularProgressIndicator() {
         children: [
           CircularProgressIndicator(),
         ],
+      ));
+}
+
+Widget HiveTest() {
+  return Container(
+      width: 60,
+      height: 40,
+      color: Colors.lightBlueAccent,
+      child: TextButton(
+        onPressed: () {},
+        child: Text(
+          'Push',
+          style: TextStyle(color: Colors.black),
+        ),
       ));
 }
