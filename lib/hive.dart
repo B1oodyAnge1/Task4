@@ -18,7 +18,7 @@ class HiveWidgetModdel {
       Hive.registerAdapter(HistoryAdapter());
     }
     var box = await Hive.openBox('MyBox');
-
+    final history = History('MyName');
     box.close();
   }
 }
