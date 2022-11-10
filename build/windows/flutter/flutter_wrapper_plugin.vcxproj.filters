@@ -1,25 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="C:\Users\Asus\TaskRadar\flutter_task_1\flutter_application_3\flutter_application_1\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
+    <ClCompile Include="C:\Users\romsm\Task4\windows\flutter\ephemeral\cpp_client_wrapper\core_implementations.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Asus\TaskRadar\flutter_task_1\flutter_application_3\flutter_application_1\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
+    <ClCompile Include="C:\Users\romsm\Task4\windows\flutter\ephemeral\cpp_client_wrapper\standard_codec.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="C:\Users\Asus\TaskRadar\flutter_task_1\flutter_application_3\flutter_application_1\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
+    <ClCompile Include="C:\Users\romsm\Task4\windows\flutter\ephemeral\cpp_client_wrapper\plugin_registrar.cc">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="C:\Users\Asus\TaskRadar\flutter_task_1\flutter_application_3\flutter_application_1\windows\flutter\CMakeLists.txt" />
+    <CustomBuild Include="C:\Users\romsm\Task4\windows\flutter\CMakeLists.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{AA3D4F2F-97C5-38B2-A878-29734D56BA91}</UniqueIdentifier>
+      <UniqueIdentifier>{2AB28D03-0976-3546-95CC-87030FD7F898}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{5BC13B46-86F4-382A-960F-1E2D156BC702}</UniqueIdentifier>
+      <UniqueIdentifier>{B012D2EA-8273-372D-B2F3-9C795B6F6D57}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

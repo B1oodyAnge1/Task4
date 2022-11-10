@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/Asus/TaskRadar/flutter_task_1/flutter_application_3/flutter_application_1/windows/flutter
+# Install script for directory: C:/Users/romsm/Task4/windows/flutter
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

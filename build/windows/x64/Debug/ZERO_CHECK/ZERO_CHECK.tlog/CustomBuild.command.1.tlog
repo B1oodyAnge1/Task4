@@ -1,6 +1,6 @@
-^C:\USERS\ASUS\TASKRADAR\FLUTTER_TASK_1\FLUTTER_APPLICATION_3\FLUTTER_APPLICATION_1\BUILD\WINDOWS\CMAKEFILES\92CBC282626922E95FA290C4702798B9\GENERATE.STAMP.RULE
+^C:\USERS\ROMSM\TASK4\BUILD\WINDOWS\CMAKEFILES\977D5CD03F3DFED55C80B9A940EA8AE2\GENERATE.STAMP.RULE
 setlocal
-"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/Asus/TaskRadar/flutter_task_1/flutter_application_3/flutter_application_1/windows -BC:/Users/Asus/TaskRadar/flutter_task_1/flutter_application_3/flutter_application_1/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Asus/TaskRadar/flutter_task_1/flutter_application_3/flutter_application_1/build/windows/flutter_application_1.sln
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/romsm/Task4/windows -BC:/Users/romsm/Task4/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/romsm/Task4/build/windows/flutter_application_1.sln
 if %errorlevel% neq 0 goto :cmEnd
 :cmEnd
 endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone

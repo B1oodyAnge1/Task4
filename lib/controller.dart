@@ -5,3 +5,8 @@ void UsingHive() {
   String name = 'MyName';
   model.jastDoIt(name);
 }
+
+void CreateMyBox() {
+  final model = HiveWidgetModdel();
+  print('Я тут 1');
+}
