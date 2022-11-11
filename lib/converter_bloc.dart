@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloudconvert_client/cloudconvert_client.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/controller.dart';
 
 import 'package:flutter_application_1/converter_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,9 +88,9 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       fileName: 'output-file.$Extension',
     );
 
-    if (outputFile == null) {
-      // User canceled the picker
-    }
+    // if (outputFile == null) {
+    //   // User canceled the picker
+    // }
 
     String myFileName;
     int found = 0;
@@ -121,6 +122,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       print(response.exception);
     } else {
       print('Файл скачен');
+      CreateMyBox(ExtensionURL, myFileName, Extension.toString());
       emit(state.copyWith());
     }
   }

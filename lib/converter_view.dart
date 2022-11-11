@@ -202,7 +202,11 @@ Widget HiveTest() {
       color: Colors.lightBlueAccent,
       child: TextButton(
         onPressed: () {
-          CreateMyBox();
+          CreateMyBox(
+            'url1',
+            'fileName2',
+            'extension3',
+          );
         },
         child: Text(
           'Push',

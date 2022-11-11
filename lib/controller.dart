@@ -1,12 +1,11 @@
 import 'package:flutter_application_1/hive.dart';
 
-void UsingHive() {
-  final model = HiveWidgetModdel();
-  String name = 'MyName';
-  model.jastDoIt(name);
-}
-
-void CreateMyBox() {
+void CreateMyBox(
+  String url,
+  String fileName,
+  String extension,
+) {
   final model = HiveWidgetModdel();
   print('Я тут 1');
+  model.CreateElementBox(url, fileName, extension);
 }
