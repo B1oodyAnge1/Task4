@@ -7,7 +7,7 @@ import 'Entitis/historyModal.dart';
 
 class HiveWidgetModdel {
   HiveWidgetModdel() {
-    if (!Hive.isAdapterRegistered(100)) {
+    if (!Hive.isAdapterRegistered(200)) {
       Hive.registerAdapter(HistoryAdapter());
     }
   }
@@ -17,10 +17,13 @@ class HiveWidgetModdel {
     String fileName1,
     String extensio1,
   ) async {
-    var box = await Hive.openBox<History>('MyHestoryBox2');
-    final history =
-        History(url: 'My2Ur999999l', name: 'MyNam2e', extensio: 'MyEx2tn');
-    //box.deleteAt(0);
+    var box = await Hive.openBox<History>('History');
+    final history = History(
+        url: 'My2Ur999999l',
+        name: 'MyNam2e',
+        extensio: 'MyEx2tn',
+        time: "time");
+    //   box.deleteAt(0);
     await box.add(history);
     print(box.values);
     box.close();

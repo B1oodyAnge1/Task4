@@ -8,7 +8,7 @@ part of 'historyModal.dart';
 
 class HistoryAdapter extends TypeAdapter<History> {
   @override
-  final int typeId = 100;
+  final int typeId = 200;
 
   @override
   History read(BinaryReader reader) {
@@ -20,19 +20,22 @@ class HistoryAdapter extends TypeAdapter<History> {
       url: fields[0] as String,
       name: fields[1] as String,
       extensio: fields[2] as String,
+      time: fields[5] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, History obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.url)
       ..writeByte(1)
       ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.extensio);
+      ..write(obj.extensio)
+      ..writeByte(5)
+      ..write(obj.time);
   }
 
   @override

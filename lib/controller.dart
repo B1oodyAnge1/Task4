@@ -1,4 +1,5 @@
 import 'package:flutter_application_1/hive.dart';
+import 'package:intl/intl.dart';
 
 void CreateMyBox(
   String url,
@@ -6,6 +7,8 @@ void CreateMyBox(
   String extension,
 ) {
   final model = HiveWidgetModdel();
-  print('Я тут 1');
+  DateTime now = DateTime.now();
+
+  print(DateFormat('dd-MM-yyyy – kk:mm').format(now));
   model.CreateElementBox(url, fileName, extension);
 }
