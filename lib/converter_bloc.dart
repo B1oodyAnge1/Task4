@@ -36,7 +36,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
         await Convertor(event, state, emit);
       } else if (event is DownloadDocument) {
         await Download(event, state, emit);
-      } else {}
+      }
     });
   }
   //получение расширений
@@ -55,7 +55,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       if (token.exception != null) {
         print(token.exception);
       } else {
-        print(token.result);
+        //  print(token.result);
         emit(state.copyWith(
             fileName: nameFString,
             filePath: pathFString,
@@ -73,7 +73,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
     if (url.exception != null) {
       print(url.exception);
     } else {
-      print(url.result);
+      //  print(url.result);
       ExtensionURL = url.result;
     }
     emit(state.copyWith());
@@ -82,37 +82,43 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
   //Блок скачивания
   Future Download(DownloadDocument event, ConverterState state,
       Emitter<ConverterState> emit) async {
-    String? Extension = event.Extension;
+    String Extension = event.Extension.toString();
     String? outputFile = await FilePicker.platform.saveFile(
       dialogTitle: 'Please select an output file:',
       fileName: 'output-file.$Extension',
     );
 
-    // if (outputFile == null) {
-    //   // User canceled the picker
-    // }
+    if (outputFile == null) {
+      print(' User canceled the picker');
+    }
 
-    String myFileName;
+    String myFileName = ' ';
     int found = 0;
     int foundName = 0;
 
     String path = myFileName = outputFile.toString();
     //Поиск имяни файла вместе с раширением
+
     while (found != -1) {
       found = myFileName.indexOf('\\');
       myFileName = myFileName.substring(found + 1);
     }
+
     //Откусываем расширение
     found = myFileName.indexOf('.');
-    myFileName = myFileName.substring(0, found);
+
+    if (found != -1) {
+      myFileName = myFileName.substring(0, found);
+    }
 
     foundName = myFileName.length; //Нахождение длинны имяни
-    found = path.indexOf('.');
+    found = path.length;
+
     path = path.substring(0, found - foundName); //Нахождение нужной деректории
 
     // print(outputFile.toString());
-    // print(myFileName);
-    // print(path);
+    //print(myFileName);
+    print('Im: $ExtensionURL, $myFileName, ${Extension.toString()}, $path');
     // print(Extension);
 
     //Скачивание файла

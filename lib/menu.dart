@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'controller.dart';
+
 class MyMenu extends StatefulWidget {
   const MyMenu({super.key});
 
@@ -33,7 +35,7 @@ class _MyMenuState extends State<MyMenu> {
                     crossAxisCount: 1,
                     childAspectRatio: 6.0,
                   ),
-                  itemCount: 300,
+                  itemCount: ReadMyBox().length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       margin: EdgeInsets.only(
@@ -41,34 +43,13 @@ class _MyMenuState extends State<MyMenu> {
                         bottom: 1,
                       ),
                       color: Colors.blue,
-                      child: Center(child: Text('$index')),
+                      child: Center(child: Text(ReadMyBox()[0]!)),
                     );
                   }),
             )
           ],
         ),
       ),
-
-      // ListView(
-      //   children: [
-      //     Container(
-      //       padding: EdgeInsets.only(top: 8, bottom: 8),
-      //       decoration:
-      //           BoxDecoration(border: Border(bottom: BorderSide(width: 2))),
-      //       child: Center(
-      //         child: Text(
-      //           'История',
-      //           style: TextStyle(
-      //             fontWeight: FontWeight.bold,
-      //             fontSize: 34,
-      //           ),
-      //         ),
-      //       ),
-      //     ),
-      //     Text('name'),
-      //     Text('My name esss==='),
-      //   ],
-      // ),
     );
   }
 }

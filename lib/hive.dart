@@ -13,67 +13,38 @@ class HiveWidgetModdel {
   }
 
   Future<void> CreateElementBox(
-    String url1,
-    String fileName1,
-    String extensio1,
+    String url,
+    String fileName,
+    String extension,
+    String time,
   ) async {
     var box = await Hive.openBox<History>('History');
     final history = History(
-        url: 'My2Ur999999l',
-        name: 'MyNam2e',
-        extensio: 'MyEx2tn',
-        time: "time");
-    //   box.deleteAt(0);
+      url: url,
+      name: fileName,
+      extensio: extension,
+      time: time,
+    );
+    //box.deleteAt(0);
     await box.add(history);
     print(box.values);
     box.close();
   }
+
+  Future<Map<int, String>> UrlReadElementBox() async {
+    var box = await Hive.openBox<History>('History');
+    //box.getAt(0);
+    int index = 0;
+    var myUrl = <int, String>{};
+    while (box.length > index) {
+      myUrl[index] = box.getAt(index)!.url.toString();
+      //print(myUrl[0]);
+      index++;
+    }
+    //= box.getAt(0)!.name;
+
+    box.close();
+
+    return myUrl;
+  }
 }
-
-// @HiveType(typeId: 1)
-// class History {
-//   @HiveField(0)
-//   late String url;
-//   @HiveField(1)
-//   late String name;
-//   @HiveField(2)
-//   late String extensio;
-
-//   History({
-//     required this.url,
-//     required this.name,
-//     required this.extensio,
-//   });
-//   @override
-//   String toString() => 'URL: $url, NAME: $name, EXTENSION: $extensio';
-// }
-
-// class HistoryAdapter extends TypeAdapter<History> {
-//   @override
-//   final typeId = 0;
-
-//   @override
-//   History read(BinaryReader reader) {
-//     final String url = reader.read();
-//     print('1');
-//     final String name = reader.read();
-//     print('2');
-//     final String extensio = reader.read();
-//     print('3');
-//     return History(
-//       url: url,
-//       name: name,
-//       extensio: extensio,
-//     );
-//   }
-
-//   @override
-//   void write(BinaryWriter writer, History obj) {
-//     writer.writeString(obj.url);
-//     print('11');
-//     writer.writeString(obj.name);
-//     print('22');
-//     writer.writeString(obj.extensio);
-//     print('33');
-//   }
-//}
