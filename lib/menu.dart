@@ -35,7 +35,7 @@ class _MyMenuState extends State<MyMenu> {
                     crossAxisCount: 1,
                     childAspectRatio: 6.0,
                   ),
-                  itemCount: ReadMyBox().length,
+                  itemCount: ReadMyBox(0).length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       margin: EdgeInsets.only(
@@ -43,7 +43,7 @@ class _MyMenuState extends State<MyMenu> {
                         bottom: 1,
                       ),
                       color: Colors.blue,
-                      child: Center(child: Text(ReadMyBox()[0]!)),
+                      child: Center(child: Text(ReadMyBox(1)[index]!)),
                     );
                   }),
             )
