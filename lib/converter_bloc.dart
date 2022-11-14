@@ -36,6 +36,8 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
         await Convertor(event, state, emit);
       } else if (event is DownloadDocument) {
         await Download(event, state, emit);
+      } else if (event is DownloadDocumentHistory) {
+        await DownloadHistory(event, state, emit);
       }
     });
   }
@@ -129,6 +131,56 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
     } else {
       print('Файл скачен');
       CreateMyBox(ExtensionURL, myFileName, Extension.toString());
+      emit(state.copyWith());
+    }
+  }
+
+  Future DownloadHistory(DownloadDocumentHistory event, ConverterState state,
+      Emitter<ConverterState> emit) async {
+    String Extension = event.Extension.toString();
+    String oldName = event.name.toString();
+    String url = event.url.toString();
+    String? outputFile = await FilePicker.platform.saveFile(
+      dialogTitle: 'Please select an output file:',
+      fileName: '$oldName.$Extension',
+    );
+
+    if (outputFile == null) {
+      print(' User canceled the picker');
+    }
+
+    String myFileName = ' ';
+    int found = 0;
+    int foundName = 0;
+
+    String path = myFileName = outputFile.toString();
+    //Поиск имяни файла вместе с раширением
+
+    while (found != -1) {
+      found = myFileName.indexOf('\\');
+      myFileName = myFileName.substring(found + 1);
+    }
+
+    //Откусываем расширение
+    found = myFileName.indexOf('.');
+
+    if (found != -1) {
+      myFileName = myFileName.substring(0, found);
+    }
+
+    foundName = myFileName.length; //Нахождение длинны имяни
+    found = path.length;
+
+    path = path.substring(0, found - foundName); //Нахождение нужной деректории
+
+    //Скачивание файла
+    ConverterResult response = await newclient.downloadResult(
+        url, myFileName, Extension.toString(), path);
+    if (response.exception != null) {
+      print(response.exception);
+    } else {
+      print('Файл скачен');
+      //CreateMyBox(ExtensionURL, myFileName, Extension.toString());
       emit(state.copyWith());
     }
   }

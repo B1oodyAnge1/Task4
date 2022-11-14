@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'converter_event.dart';
+import 'converter_bloc.dart';
+import 'converter_state.dart';
 
 import 'controller.dart';
 
@@ -12,6 +16,7 @@ class MyMenu extends StatefulWidget {
 class _MyMenuState extends State<MyMenu> {
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Drawer(
       child: Container(
         child: Column(
@@ -38,12 +43,38 @@ class _MyMenuState extends State<MyMenu> {
                   itemCount: ReadMyBox(0).length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
+                      padding: EdgeInsets.only(left: 10),
                       margin: EdgeInsets.only(
                         top: 1,
                         bottom: 1,
                       ),
-                      color: Colors.blue,
-                      child: Center(child: Text(ReadMyBox(1)[index]!)),
+                      color: Colors.green,
+                      child: Container(
+                          child: Row(
+                        children: [
+                          Text(ReadMyBox(1)[index]!),
+                          Spacer(),
+                          RawMaterialButton(
+                            onPressed: () {
+                              context
+                                  .read<ConverterBloc>()
+                                  .add(DownloadDocumentHistory(
+                                    Extension: ReadMyBox(2)[index],
+                                    name: ReadMyBox(1)[index],
+                                    url: ReadMyBox(0)[index],
+                                  ));
+                            },
+                            elevation: 2.0,
+                            fillColor: Colors.white,
+                            child: Icon(
+                              Icons.download,
+                              size: 15,
+                            ),
+                            padding: EdgeInsets.all(1.0),
+                            shape: CircleBorder(),
+                          )
+                        ],
+                      )),
                     );
                   }),
             )
