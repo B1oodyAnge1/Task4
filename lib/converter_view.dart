@@ -157,7 +157,6 @@ class _ConverterPageState extends State<ConverterPage> {
                       ),
                     ),
                   ),
-                  HiveTest(),
                 ],
               ),
             )),
@@ -186,26 +185,5 @@ Widget _CircularProgressIndicator() {
         children: [
           CircularProgressIndicator(),
         ],
-      ));
-}
-
-Widget HiveTest() {
-  return Container(
-      width: 60,
-      height: 40,
-      color: Colors.lightBlueAccent,
-      child: TextButton(
-        onPressed: () {
-          // CreateMyBox(
-          //   'url1',
-          //   'fileName2',
-          //   'extension3',
-          // );
-          ReadMyBox(0);
-        },
-        child: Text(
-          'Push',
-          style: TextStyle(color: Colors.black),
-        ),
       ));
 }
