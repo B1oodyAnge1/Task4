@@ -16,7 +16,6 @@ class MyMenu extends StatefulWidget {
 class _MyMenuState extends State<MyMenu> {
   @override
   Widget build(BuildContext context) {
-    setState(() {});
     return Drawer(
       child: Container(
         child: Column(
