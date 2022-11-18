@@ -38,6 +38,8 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
         await Download(event, state, emit);
       } else if (event is DownloadDocumentHistory) {
         await DownloadHistory(event, state, emit);
+      } else if (event is MyNewHistory) {
+        await MyHistory(event, state, emit);
       }
     });
   }
@@ -137,12 +139,12 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
 
   Future DownloadHistory(DownloadDocumentHistory event, ConverterState state,
       Emitter<ConverterState> emit) async {
-    String Extension = event.Extension.toString();
+    String extension = event.Extension.toString();
     String oldName = event.name.toString();
     String url = event.url.toString();
     String? outputFile = await FilePicker.platform.saveFile(
       dialogTitle: 'Please select an output file:',
-      fileName: '$oldName.$Extension',
+      fileName: '$oldName.$extension',
     );
 
     if (outputFile == null) {
@@ -175,7 +177,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
 
     //Скачивание файла
     ConverterResult response = await newclient.downloadResult(
-        url, myFileName, Extension.toString(), path);
+        url, myFileName, extension.toString(), path);
     if (response.exception != null) {
       print(response.exception);
     } else {
@@ -183,5 +185,20 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       //CreateMyBox(ExtensionURL, myFileName, Extension.toString());
       emit(state.copyWith());
     }
+  }
+
+  Future MyHistory(MyNewHistory event, ConverterState state,
+      Emitter<ConverterState> emit) async {
+    var myUrl = await ReadMyBox(0);
+    var myName = await ReadMyBox(1);
+    var myExtension = await ReadMyBox(2);
+    var myTime = await ReadMyBox(3);
+    print(myUrl[0]);
+    myUrl.length;
+    emit(state.copyWith(
+        historyLength: myUrl.length,
+        historyExtension: myExtension,
+        historyName: myName,
+        historyUrl: myUrl));
   }
 }

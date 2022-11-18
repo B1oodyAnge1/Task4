@@ -27,3 +27,7 @@ class DownloadDocumentHistory extends ConverterEvent {
   DownloadDocumentHistory(
       {required this.Extension, required this.name, required this.url});
 }
+
+class MyNewHistory extends ConverterEvent {
+  MyNewHistory();
+}
