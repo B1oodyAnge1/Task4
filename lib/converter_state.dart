@@ -1,5 +1,3 @@
-import 'package:flutter/animation.dart';
-
 import 'main.dart';
 
 class ConverterState extends MyApp {
@@ -10,6 +8,7 @@ class ConverterState extends MyApp {
   final Map<int, String> historyName;
   final Map<int, String> historyUrl;
   final List<String> listExtensionString;
+  final Map<int, String> historyTime;
   const ConverterState({
     this.filePath = '0000',
     this.fileName = ' ',
@@ -18,6 +17,7 @@ class ConverterState extends MyApp {
     this.historyExtension = const {},
     this.historyName = const {},
     this.historyUrl = const {},
+    this.historyTime = const {},
   });
   ConverterState copyWith({
     String? filePath,
@@ -26,6 +26,7 @@ class ConverterState extends MyApp {
     Map<int, String>? historyExtension,
     Map<int, String>? historyName,
     Map<int, String>? historyUrl,
+    Map<int, String>? historyTime,
     List<String>? listExtensionString,
   }) {
     return ConverterState(
@@ -35,6 +36,7 @@ class ConverterState extends MyApp {
       historyExtension: historyExtension ?? this.historyExtension,
       historyName: historyName ?? this.historyName,
       historyUrl: historyUrl ?? this.historyUrl,
+      historyTime: historyTime ?? this.historyTime,
       listExtensionString: listExtensionString ?? this.listExtensionString,
     );
   }
@@ -47,6 +49,7 @@ class ConverterState extends MyApp {
         historyExtension,
         historyName,
         historyUrl,
+        historyTime,
         listExtensionString,
       ];
 }

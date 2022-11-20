@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'converter_event.dart';
 import 'converter_bloc.dart';
 import 'converter_state.dart';
-
-import 'controller.dart';
 
 class MyMenu extends StatefulWidget {
   const MyMenu({super.key});
@@ -16,6 +15,8 @@ class MyMenu extends StatefulWidget {
 class _MyMenuState extends State<MyMenu> {
   @override
   Widget build(BuildContext context) {
+    bool buttonStatus;
+
     return BlocProvider(
         create: ((context) => ConverterBloc()),
         child: BlocBuilder<ConverterBloc, ConverterState>(
@@ -62,18 +63,25 @@ class _MyMenuState extends State<MyMenu> {
                                       '${state.historyName[index]!}.${state.historyExtension[index]!}'),
                                   Spacer(),
                                   RawMaterialButton(
-                                    onPressed: () {
-                                      context
-                                          .read<ConverterBloc>()
-                                          .add(DownloadDocumentHistory(
-                                            Extension:
-                                                state.historyExtension[index],
-                                            name: state.historyName[index],
-                                            url: state.historyUrl[index],
-                                          ));
-                                    },
+                                    onPressed: ButtonStatus(
+                                            state.historyTime[index]!)
+                                        ? () {
+                                            context
+                                                .read<ConverterBloc>()
+                                                .add(DownloadDocumentHistory(
+                                                  Extension: state
+                                                      .historyExtension[index],
+                                                  name:
+                                                      state.historyName[index],
+                                                  url: state.historyUrl[index],
+                                                ));
+                                          }
+                                        : null,
                                     elevation: 2.0,
-                                    fillColor: Colors.white,
+                                    fillColor:
+                                        ButtonStatus(state.historyTime[index]!)
+                                            ? Colors.white
+                                            : Colors.grey,
                                     child: Icon(
                                       Icons.download,
                                       size: 15,
@@ -92,5 +100,23 @@ class _MyMenuState extends State<MyMenu> {
             );
           },
         ));
+  }
+
+  bool ButtonStatus(String itsTime) {
+    int found;
+    var dd, mm, yyyy;
+    var dd1, mm1, yyyy1;
+    found = itsTime.indexOf('-');
+    dd = itsTime.substring(0, found); //День
+    DateTime now = DateTime.now();
+    dd1 = DateFormat('dd').format(now);
+    dd = int.parse(dd);
+    dd1 = int.parse(dd1);
+
+    if (dd != dd1) {
+      return false;
+    } else {
+      return true;
+    }
   }
 }

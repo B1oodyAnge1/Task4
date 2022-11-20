@@ -1,8 +1,5 @@
-import 'dart:math';
-
 import 'package:cloudconvert_client/cloudconvert_client.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controller.dart';
 
 import 'package:flutter_application_1/converter_state.dart';
@@ -12,7 +9,7 @@ import 'converter_event.dart';
 class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
   String? nameFString = " ";
   String? pathFString = " ";
-  String ExtensionURL = " ";
+  String extensionURL = " ";
 
   //Sandbox
   Client newclient = Client(
@@ -59,7 +56,6 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       if (token.exception != null) {
         print(token.exception);
       } else {
-        //  print(token.result);
         emit(state.copyWith(
             fileName: nameFString,
             filePath: pathFString,
@@ -71,14 +67,13 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
   //Блок конвертации
   Future Convertor(ConverterDocument event, ConverterState state,
       Emitter<ConverterState> emit) async {
-    String? Extension = event.Extension;
+    String? extension = event.Extension;
     ConverterResult url =
-        (await newclient.postJob(pathFString.toString(), Extension.toString()));
+        (await newclient.postJob(pathFString.toString(), extension.toString()));
     if (url.exception != null) {
       print(url.exception);
     } else {
-      //  print(url.result);
-      ExtensionURL = url.result;
+      extensionURL = url.result;
     }
     emit(state.copyWith());
   }
@@ -120,19 +115,14 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
 
     path = path.substring(0, found - foundName); //Нахождение нужной деректории
 
-    // print(outputFile.toString());
-    //print(myFileName);
-    print('Im: $ExtensionURL, $myFileName, ${Extension.toString()}, $path');
-    // print(Extension);
-
     //Скачивание файла
     ConverterResult response = await newclient.downloadResult(
-        ExtensionURL, myFileName, Extension.toString(), path);
+        extensionURL, myFileName, Extension.toString(), path);
     if (response.exception != null) {
       print(response.exception);
     } else {
       print('Файл скачен');
-      CreateMyBox(ExtensionURL, myFileName, Extension.toString());
+      createMyBox(extensionURL, myFileName, Extension.toString());
       emit(state.copyWith());
     }
   }
@@ -182,7 +172,7 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
       print(response.exception);
     } else {
       print('Файл скачен');
-      //CreateMyBox(ExtensionURL, myFileName, Extension.toString());
+
       emit(state.copyWith());
     }
   }
@@ -193,12 +183,13 @@ class ConverterBloc extends Bloc<ConverterEvent, ConverterState> {
     var myName = await ReadMyBox(1);
     var myExtension = await ReadMyBox(2);
     var myTime = await ReadMyBox(3);
-    print(myUrl[0]);
+
     myUrl.length;
     emit(state.copyWith(
         historyLength: myUrl.length,
         historyExtension: myExtension,
         historyName: myName,
-        historyUrl: myUrl));
+        historyUrl: myUrl,
+        historyTime: myTime));
   }
 }

@@ -9,11 +9,10 @@ import 'converter_bloc.dart';
 import 'converter_state.dart';
 import 'converter_event.dart';
 
-import 'controller.dart';
-
 class ConverterPage extends StatefulWidget {
   const ConverterPage({Key? key}) : super(key: key);
   @override
+  // ignore: library_private_types_in_public_api
   _ConverterPageState createState() => _ConverterPageState();
 }
 
@@ -36,21 +35,21 @@ class _ConverterPageState extends State<ConverterPage> {
         child: BlocBuilder<ConverterBloc, ConverterState>(
             builder: (context, state) {
           return Scaffold(
-            drawer: MyMenu(),
+            drawer: const MyMenu(),
             appBar: AppBar(),
             body: Center(
                 child: Container(
-              padding: EdgeInsets.only(top: 230),
+              padding: const EdgeInsets.only(top: 230),
               child: Column(
                 children: [
                   Container(
                     width: 362,
                     height: 40,
-                    padding: EdgeInsets.only(left: 6, right: 6),
+                    padding: const EdgeInsets.only(left: 6, right: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                            color: Color.fromARGB(57, 198, 198, 198),
+                            color: const Color.fromARGB(57, 198, 198, 198),
                             width: 2)),
                     child: Container(
                       color: Colors.white,
@@ -79,23 +78,22 @@ class _ConverterPageState extends State<ConverterPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Container(
-                    child: Text(
-                      'Выбранный файл:   ${state.fileName} ',
-                    ),
+                  Text(
+                    'Выбранный файл:   ${state.fileName} ',
                   ),
 
 //----------------------------------------------------
                   Container(
-                      margin: EdgeInsets.only(top: 15),
+                      margin: const EdgeInsets.only(top: 15),
                       width: 362,
                       height: 40,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(
-                              color: Color.fromARGB(57, 198, 198, 198),
+                              color: const Color.fromARGB(57, 198, 198, 198),
                               width: 2)),
-                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 2),
                       child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                         value: value,
@@ -111,7 +109,7 @@ class _ConverterPageState extends State<ConverterPage> {
 
                             this.value = value;
                             _loading = true;
-                            Timer(Duration(seconds: 3), () {
+                            Timer(const Duration(seconds: 3), () {
                               setState(() {
                                 _loading = false;
                               });
@@ -121,18 +119,18 @@ class _ConverterPageState extends State<ConverterPage> {
                       ))),
 //-----------------------------------------------------
 
-                  _loading ? _CircularProgressIndicator() : Container(),
-                  SizedBox(
+                  _loading ? circularProgressIndicator() : Container(),
+                  const SizedBox(
                     height: 20,
                   ),
                   Container(
                     width: 362,
                     height: 40,
-                    padding: EdgeInsets.only(left: 6, right: 6),
+                    padding: const EdgeInsets.only(left: 6, right: 6),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         border: Border.all(
-                            color: Color.fromARGB(57, 198, 198, 198),
+                            color: const Color.fromARGB(57, 198, 198, 198),
                             width: 2)),
                     child: Container(
                       color: Colors.white,
@@ -168,7 +166,7 @@ class _ConverterPageState extends State<ConverterPage> {
         value: item,
         child: Text(
           item,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 15,
               decoration: TextDecoration.none,
               fontWeight: FontWeight.bold),
@@ -176,7 +174,7 @@ class _ConverterPageState extends State<ConverterPage> {
       );
 }
 
-Widget _CircularProgressIndicator() {
+Widget circularProgressIndicator() {
   return Container(
       width: 40,
       height: 60,
